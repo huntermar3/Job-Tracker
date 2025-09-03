@@ -17,7 +17,7 @@
 
         <div class = "login-signup-container">
             <button class = "login-button ">Login</button>
-            <button class = "signup-button">Signup</button>
+            <button class = "signup-button" href = "views/register.php">Signup</button>
         </div>
 
         <div class = "username-container"> 
