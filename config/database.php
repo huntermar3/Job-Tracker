@@ -2,7 +2,7 @@
 
 // read .env file line by line
 $env = [];
-$lines = file(__DIR__ . '../.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$lines = file(__DIR__ . '/../.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 foreach ($lines as $line) {
     // skip comments
@@ -14,13 +14,13 @@ foreach ($lines as $line) {
 }
 
 // get database credentials from $env
-$servername = $env['DB_HOST'] ?? 'localhost';
-$username   = $env['DB_USER'] ?? 'root';
-$password   = $env['DB_PASS'] ?? '';
-$dbname     = $env['DB_NAME'] ?? 'job_tracker';
+define('DB_HOST', $env['DB_HOST'] ?? 'localhost');
+define('DB_USER', $env['DB_USER'] ?? 'root');
+define('DB_PASS', $env['DB_PASS'] ?? '');
+define('DB_NAME', $env['DB_NAME'] ?? 'job_tracker');
 
 // create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // check connection
 if ($conn->connect_error) {
