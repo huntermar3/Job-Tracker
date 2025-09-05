@@ -17,10 +17,8 @@ brew install php
 ```
 
 ## 3. Start the PHP bulit-in server
-Navigate to the project folder
-```bash
-cd ~/JobTracker
-```
+Navigate to the project folder where you cloned the repo.
+
 Then we need to start the server
 ```bash
 php -S localhost:8000
