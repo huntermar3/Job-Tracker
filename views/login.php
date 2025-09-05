@@ -17,20 +17,32 @@
 
         <div class = "login-signup-container">
             <button class = "login-button ">Login</button>
-            <button class = "signup-button" href = "views/register.php">Signup</button>
+            <a href="register.php" class="signup-button">Sign-up</a>
         </div>
 
-        <div class = "username-container"> 
-            <h6 class= "username">Username</h6>
-            <input type = "text" class = "username-input" placeholder = "Enter your username" required></input>
-        </div>
+            <form action="auth.php" method="POST">
+            <div class="username-container"> 
+                <h6 class="username">Username</h6>
+                <input 
+                    type="text" 
+                    class="username-input" 
+                    name="username" 
+                    placeholder="Enter your username" 
+                    required>
+            </div>
 
-        <div class = "password-container"> 
-            <h6 class = "password">Password</h6>
-            <input type = "password" class = "password-input" placeholder = "Enter your password" required></input>
-        </div>
+            <div class="password-container"> 
+                <h6 class="password">Password</h6>
+                <input 
+                    type="password" 
+                    class="password-input" 
+                    name="password" 
+                    placeholder="Enter your password" 
+                    required>
+            </div>
 
-        <button class = "signin-button">Sign-in </button>
+            <button type="submit" class="signin-button">Sign-in</button>
+        </form>
     </div>
 </div>
    

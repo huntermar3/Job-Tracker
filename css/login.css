@@ -60,14 +60,23 @@ html, body {
 }
 
 .login-button {
+    font-size: 13px;
     background-color: #0E7AFE;
     color: white;
 }
 
 .signup-button {
-    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     color: #333;
+    font-size: 13px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
+
 
 .username-container, .password-container {
     display: flex;
