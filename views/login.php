@@ -1,27 +1,51 @@
 <?php
-// Start a session (needed for login systems later)
-session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Job Tracker</title>
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 
-    <h1>Welcome to Job Tracker</h1>
+<div class = "main-container">
+    <div class = "center-container">
+        <h3 class = "title">Job Tracker</h3>
+        <p class = "small-text">Manage your job applications efficiently</p>
 
-    <?php if (isset($_SESSION['user'])): ?>
-        <p>Hello, <?php echo $_SESSION['user']; ?>! You are logged in.</p>
-        <a href="views/dashboard.php">Go to Dashboard</a> |
-        <a href="controllers/auth.php?logout=true">Logout</a>
-    <?php else: ?>
-        <p>You are not logged in.</p>
-        <a href="views/login.php">Login</a> |
-        <a href="views/register.php">Register</a>
-    <?php endif; ?>
+        <div class = "login-signup-container">
+            <button class = "login-button ">Login</button>
+            <a href="register.php" class="signup-button">Sign-up</a>
+        </div>
 
+            <form action="auth.php" method="POST">
+            <div class="username-container"> 
+                <h6 class="username">Username</h6>
+                <input 
+                    type="text" 
+                    class="username-input" 
+                    name="username" 
+                    placeholder="Enter your username" 
+                    required>
+            </div>
+
+            <div class="password-container"> 
+                <h6 class="password">Password</h6>
+                <input 
+                    type="password" 
+                    class="password-input" 
+                    name="password" 
+                    placeholder="Enter your password" 
+                    required>
+            </div>
+
+            <button type="submit" class="signin-button">Sign-in</button>
+        </form>
+    </div>
+</div>
+   
 </body>
+
 </html>
