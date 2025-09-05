@@ -1,4 +1,5 @@
-CREATE TABLE USER
+
+CREATE TABLE USERS
 ( FName		VARCHAR(10)		NOT NULL, 
   Minit     CHAR,
   Lname     VARCHAR(20)     NOT NULL,
@@ -8,20 +9,19 @@ CREATE TABLE USER
   
 PRIMARY KEY		(UserID));
 
-
-CREATE TABLE JOB_LISTING 
-( CName			VARCHAR(15)		NOT NULL,
-  JTitle 		VARCHAR(20) 	NOT NULL,
-  Location		VARCHAR(20)		NOT NULL,
-  Salary		Int				NOT NULL,
-  C_Email		VARCHAR(20),
-  C_Phone		Int,
-  Job_Desc		TEXT,
-  Date_App		DATE			NOT NULL,
-  App_Status	VARCHAR(15)		NOT NULL,
-  
-  PRIMARY KEY 	(C_Email));
-
+CREATE TABLE JOB_LISTING (
+  JobID      INT AUTO_INCREMENT,
+  CName      VARCHAR(15) NOT NULL,
+  JTitle     VARCHAR(20) NOT NULL,
+  Location   VARCHAR(20) NOT NULL,
+  Salary     INT NOT NULL,
+  C_Email    VARCHAR(50),
+  C_Phone    BIGINT,
+  Job_Desc   TEXT,
+  Date_App   DATE NOT NULL,
+  App_Status VARCHAR(15) NOT NULL,
+  PRIMARY KEY (JobID)
+);
 
 CREATE TABLE SPREADSHEET
 ( Month			VARCHAR(9)		NOT NULL,
