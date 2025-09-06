@@ -1,3 +1,18 @@
+<?php
+    session_start();
+
+    //db connection
+    require_once "../config/database.php";
+
+    //make sure the user is logged in, _SESSION is an array that stores tokens. When the user logs in this should 'username' should be stored
+    if(!isset($_SESSION['username'])){
+        header("Location: login.php");
+        exit();
+    }
+
+    $username = $_SESSION['username'];
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
