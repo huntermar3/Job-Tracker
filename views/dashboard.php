@@ -11,7 +11,7 @@
 
     <div class="title-logout-container">
         <h2 class="title">Job Tracker</h2>
-        <form method="post" action="logout.php">
+        <form method="post" action="../controllers/logout.php">
             <button class="logout-button" type="submit">Log Out</button>
         </form>
     </div>
