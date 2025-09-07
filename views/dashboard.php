@@ -5,12 +5,12 @@
     require_once "../config/database.php";
 
     //make sure the user is logged in, _SESSION is an array that stores tokens. When the user logs in this should 'username' should be stored
-    if(!isset($_SESSION['username'])){
-        header("Location: login.php");
-        exit();
-    }
+    // if(!isset($_SESSION['username'])){
+    //     header("Location: login.php");
+    //     exit();
+    // }
 
-    $username = $_SESSION['username'];
+    // $username = $_SESSION['username'];
 
     // find the user id so we can reference that id in all the spreadsheets
     $sql = $conn->prepare(
@@ -24,9 +24,10 @@
 
     if ($row = $result->fetch_assoc()) {
         $user_id = $row['UserID'];
-    } else {
-        die("User not found.");
     }
+    // } else {
+    //     die("User not found.");
+    // }
 
     $sql->close();
 
@@ -84,6 +85,15 @@
                 </form>
             </div>
         </div>
+
+        <?php
+            echo "<div class = 'spreadsheets-container'> " ;
+            if(empty($spreadsheets)){
+                echo "<h4 class = 'empty-spreadsheets-text'>There are no spreadsheets yet! </h4>" ;
+            }
+
+            echo "</div>";
+        ?>
     </div>
 
 </div>
