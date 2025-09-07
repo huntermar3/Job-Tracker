@@ -1,19 +1,17 @@
 
 CREATE TABLE USERS
-( FName		VARCHAR(10)		NOT NULL, 
-  Minit     CHAR,
-  Lname     VARCHAR(20)     NOT NULL,
-  Username  VARCHAR(20)		NOT NULL,
+( Username  VARCHAR(20)		NOT NULL,
   Password  VARCHAR(20)		NOT NULL,
-  UserID	VARCHAR(10)		NOT NULL,
+  UserID	INT	AUTO_INCREMENT	NOT NULL,
   
 PRIMARY KEY		(UserID));
 
 CREATE TABLE JOB_LISTING (
   JobID      INT AUTO_INCREMENT,
-  CName      VARCHAR(15) NOT NULL,
-  JTitle     VARCHAR(20) NOT NULL,
-  Location   VARCHAR(20) NOT NULL,
+  Spreadsheet_id INT NOT NULL,
+  CName      VARCHAR(50) NOT NULL,
+  JTitle     VARCHAR(30) NOT NULL,
+  Location   VARCHAR(30) NOT NULL,
   Salary     INT NOT NULL,
   C_Email    VARCHAR(50),
   C_Phone    BIGINT,
@@ -21,16 +19,17 @@ CREATE TABLE JOB_LISTING (
   Date_App   DATE NOT NULL,
   App_Status VARCHAR(15) NOT NULL,
   PRIMARY KEY (JobID)
+  FOREIGN KEY (Spreadsheet_id) REFERENCES SPREADSHEET(id) ON DELETE CASCADE
 );
 
 CREATE TABLE SPREADSHEET
-( Month			VARCHAR(9)		NOT NULL,
-  Year			INT				NOT NULL,
-  Date_Created	DATE			NOT NULL,
-  Modified_T	TIME,
-  Modified_D	DATE,
+( id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  Title VARCHAR(100) NOT NULL,
+  Date_Created	DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  Modified_At DATETIME,
   
-  PRIMARY KEY	(Month, Year));
+  FOREIGN KEY (user_id) REFERENCES users(UserID));
   
   
   
