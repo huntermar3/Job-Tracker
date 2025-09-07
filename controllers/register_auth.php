@@ -1,42 +1,67 @@
 <?php
-    $DB_HOST="localhost";
-    $DB_NAME="job_tracker";
-    $DB_USER="root";
-    $DB_PASS="";
+require_once "../config/database.php";
 
-    // Create connection
-    $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+//we sent a post req to this file, we can grab the username and password the user jsut entered
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $confirmPassword = $_POST['confirm_password'] ?? '';
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    // if any of them are blank, tell them it cant be blank and reset
+    if (!$username || !$password || !$confirmPassword) {
+        echo "<script>
+                alert('All fields are required.');
+                window.location.href = '../views/register.php';
+              </script>";
+        exit();
     }
 
-    //Collect username and password, decide whether or not we need this other data.
-    $fname = "fname";
-    $minit = '1';
-    $lname = "lname";
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $userid = "userid";
+    // make sure the passwords match
+    if ($password !== $confirmPassword) {
+        echo "<script>
+                alert('Passwords do not match. Please try again.');
+                window.location.href = '../views/register.php';
+              </script>";
+        exit();
+    }
 
-    //Hash password if neccessary, character limit of password column must be increased to do this
-    //$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    // check if username already exists
+    $checkSql = "SELECT UserID FROM USERS WHERE Username = ?";
+    $checkStmt = $conn->prepare($checkSql);
+    $checkStmt->bind_param("s", $username);
+    $checkStmt->execute();
+    $checkStmt->store_result();
 
-    //Create sql statement out of acquired information, ? values are populated by bind_param function
-    $sql = "INSERT INTO USERS (FName, Minit, Lname, Username, Password, UserID) VALUES (?, ?, ?, ?, ?, ?)";
+    if ($checkStmt->num_rows > 0) {
+        echo "<script>
+                alert('Username already exists. Please choose another.');
+                window.location.href = '../views/register.php';
+              </script>";
+        $checkStmt->close();
+        $conn->close();
+        exit();
+    }
 
-    // Use prepared statements for security
+    $checkStmt->close();
+
+    // insert new user
+    $sql = "INSERT INTO USERS (Username, Password) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssss", $fname, $minit, $lname, $username, $password, $userid);
+    $stmt->bind_param("ss", $username, $password);
 
     if ($stmt->execute()) {
-        echo "New user registered successfully!";
-    } 
-    else {
-        echo "Error: " . $stmt->error;
+        echo "<script>
+                alert('Registration successful! Please sign in with your new account.');
+                window.location.href = '../views/login.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Error: " . $stmt->error . "');
+                window.location.href = '../views/register.php';
+              </script>";
     }
 
     $stmt->close();
     $conn->close();
+}
 ?>

@@ -20,7 +20,7 @@
             <button class="signup-button">Sign-up</button>
         </div>
 
-        <form action="register_auth.php" method="POST">
+        <form action="../controllers/register_auth.php" method="POST">
             <div class="username-container"> 
                 <h6 class="username">Username</h6>
                 <input 
