@@ -1,23 +1,22 @@
 <?php
     // Database connection settings
-    $host = "localhost";
-    $dbname = "job_tracker";  // Database name
-    $user = "root";
-    $pass = ""; //MySQL password
+    $DB_HOST="localhost";
+    $DB_NAME="job_tracker";
+    $DB_USER="root";
+    $DB_PASS="";
 
     // Create connection
-    $conn = new mysqli($host, $user, $pass, $dbname);
+    $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Collect form data
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
+    // Collect form data,
+    $username = $_POST["username"] ?? '';
+    $password = $_POST["password"] ?? '';
 
-    if(empty($username) || empty(password)){
+    if(empty($username) || empty($password)){
         die("Username and password are required");
     }
 
@@ -31,8 +30,9 @@
         $row = $result->fetch_assoc();
         //$hashedPassword = $row['Password'];
         $dbpassword = $row['Password'];
-        // Verify submitted password against the hash
-        if (password_verify($password, $dbpassword)) {
+        // Verify submitted password against the hash(Changed to not use hash)
+        //if (password_verify($password, $dbpassword)) {
+		if($password === $dbpassword){
             echo "Login successful! Welcome, " . htmlspecialchars($username) . ".";
             // In the future code can be added here to call another php file with a dashboard rather than echo a welcome
         }
