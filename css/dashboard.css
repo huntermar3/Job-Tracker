@@ -152,7 +152,7 @@ hr {
     border: 2px solid #0E7AFE;
     border-radius: 6px;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 10px;
     padding: 20px;
     margin-top: 20px;
     box-sizing: border-box;
@@ -162,5 +162,43 @@ hr {
     color: #414a4c ;
     font-weight: 600;
 
+}
+
+.individual-spreadsheet{
+    width: 300px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid #0E7AFE; 
+}
+
+.title-of-spreadsheet{
+    color: #414a4c;
+    font-weight: 500;
+}
+
+.last-modified-text{
+    color: gray ;
+    font-weight: 600;
+}
+
+.open-spreadsheet-button{
+    background-color: #0E7AFE;
+    width: 200px;
+    height: 40px;
+    color: white;
+    font-size: 13px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.open-spreadsheet-button:hover{
+    background-color: #d3d3d3;
+    width: 200px;
+    height: 40px;
+    color: black;
+    font-size: 13px;
+    margin-top: 20px;
+    cursor: pointer;
 }
 

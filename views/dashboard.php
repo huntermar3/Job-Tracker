@@ -77,7 +77,7 @@
         <div id="modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <form method="post" action="create_spreadsheet.php">
+                <form method="post" action="../controllers/create_spreadsheet.php">
                     <label for="sheetName">Spreadsheet Name:</label>
                     <input type="text" class="sheetName" name="sheetName" required>
                     <button class = "create-sheet-button" type="submit">Create</button>
@@ -89,6 +89,16 @@
             echo "<div class = 'spreadsheets-container'> " ;
             if(empty($spreadsheets)){
                 echo "<h4 class = 'empty-spreadsheets-text'>There are no spreadsheets yet! </h4>" ;
+            } 
+            // if the variable  (its and array) spreadsheet is populated then we can say the user must have spreadsheets
+            else {
+                foreach ($spreadsheets as $sheet){
+                    echo "<div class = 'individual-spreadsheet'> " ;
+                    echo "<h3 class = 'title-of-spreadsheet'> " . $sheet["Title"] . "</h3>";
+                    echo "<p class = 'last-modified-text'>Last Modified:". $sheet["Modified_At"] . "</p>";
+                    echo "<button class = 'open-spreadsheet-button'> Open Spreadsheet </button>";
+                    echo "</div>";
+                }
             }
 
             echo "</div>";
