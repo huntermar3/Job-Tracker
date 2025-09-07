@@ -11,7 +11,44 @@
     }
 
     $username = $_SESSION['username'];
-    
+
+    // find the user id so we can reference that id in all the spreadsheets
+    $sql = $conn->prepare(
+    "SELECT UserID 
+    FROM users 
+    WHERE Username = ?"
+    );
+    $sql->bind_param("s", $username);
+    $sql->execute();
+    $result = $sql->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        $user_id = $row['UserID'];
+    } else {
+        die("User not found.");
+    }
+
+    $sql->close();
+
+    //fetch the user's spreadsheets. I want to display the recently modified on top.
+    $sql = $conn->prepare("
+    SELECT id, Title, Modified_At, Date_Created
+    FROM SPREADSHEET
+    WHERE user_id = ?
+    ORDER BY Modified_At DESC
+    ");
+    $sql->bind_param("i", $user_id);
+    $sql->execute();
+    $result = $sql->get_result();
+
+    //store spreadsheets in an array
+    $spreadsheets = [];
+    while ($row = $result->fetch_assoc()) {
+        $spreadsheets[] = $row;
+    }
+
+    $sql->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
