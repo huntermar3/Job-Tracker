@@ -94,7 +94,13 @@
             else {
                 foreach ($spreadsheets as $sheet){
                     echo "<div class = 'individual-spreadsheet'> " ;
+                    echo "<div class = 'top-row-of-spreadsheet'>";
                     echo "<h3 class = 'title-of-spreadsheet'> " . $sheet["Title"] . "</h3>";
+                    echo "<form method='post' action='../controllers/delete_spreadsheet.php'>";
+                    echo "<input type='hidden' name='sheet_id' value='" . $sheet["id"] . "'>";
+                    echo "<button class='delete-button' type='submit'>Delete</button>";
+                    echo "</form>";
+                    echo "</div>";
                     echo "<p class = 'last-modified-text'>Last Modified:". $sheet["Modified_At"] . "</p>";
                     echo "<button class = 'open-spreadsheet-button'> Open Spreadsheet </button>";
                     echo "</div>";
