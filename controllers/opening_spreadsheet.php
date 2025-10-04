@@ -136,7 +136,7 @@ $sql->close();
             <input type="text" name="App_Status" id="edit-App_Status">
         </div>
 
-        <button class="create-job-button" type="submit">Update Job</button>
+        <button class="edit-job-button" type="submit">Update Job</button>
         </form>
     </div>
     </div>
@@ -176,11 +176,6 @@ $sql->close();
                 <label for="C_Phone">Contact Phone:</label>
                 <input type="text" name="C_Phone" maxLength = "50"><br>
                 </div>
-                
-                <!-- <div class = "modal-row">
-                <label for="Job_Desc">Job Description:</label>
-                <textarea name="Job_Desc"></textarea><br>
-                </div> -->
                 
                 <div class = "modal-row">
                 <label for="Date_App">Date Applied:</label>
@@ -232,12 +227,19 @@ $sql->close();
                                     <input type="hidden" name="sheet_id" value="<?php echo $sheet_id; ?>">
                                     <button type="submit">Delete</button>
                                 </form>
-                                <button type = "submit" id = "open-edit-modal">Edit </button>
-                                <!-- <form method="post" action="../controllers/edit_job.php">
-                                    <input type="hidden" name="job_id" value="<?php echo $job['JobID']; ?>">
-                                    <input type="hidden" name="sheet_id" value="<?php echo $sheet_id; ?>">
-                                    <button type="submit">Edit</button>
-                                </form> -->
+                                <button type="button" 
+                                class="open-edit-modal"
+                                data-id="<?php echo $job['JobID']; ?>"
+                                data-cname="<?php echo htmlspecialchars($job['CName']); ?>"
+                                data-jtitle="<?php echo htmlspecialchars($job['JTitle']); ?>"
+                                data-location="<?php echo htmlspecialchars($job['Location']); ?>"
+                                data-salary="<?php echo htmlspecialchars($job['Salary']); ?>"
+                                data-email="<?php echo htmlspecialchars($job['C_Email']); ?>"
+                                data-phone="<?php echo htmlspecialchars($job['C_Phone']); ?>"
+                                data-date="<?php echo htmlspecialchars($job['Date_App']); ?>"
+                                data-status="<?php echo htmlspecialchars($job['App_Status']); ?>">
+                                Edit
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -255,6 +257,34 @@ $sql->close();
     const editModal = document.getElementById("edit-modal");
     const editButtons = document.querySelectorAll(".open-edit-modal");
     const closeEditBtn = document.querySelector(".close-edit");
+
+    editButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+        // grab job data
+        document.getElementById("edit-job-id").value = btn.dataset.id;
+        document.getElementById("edit-CName").value = btn.dataset.cname;
+        document.getElementById("edit-JTitle").value = btn.dataset.jtitle;
+        document.getElementById("edit-Location").value = btn.dataset.location;
+        document.getElementById("edit-Salary").value = btn.dataset.salary;
+        document.getElementById("edit-C_Email").value = btn.dataset.email;
+        document.getElementById("edit-C_Phone").value = btn.dataset.phone;
+        document.getElementById("edit-Date_App").value = btn.dataset.date;
+        document.getElementById("edit-App_Status").value = btn.dataset.status;
+
+        // show modal
+        editModal.style.display = "flex";
+    });
+    })
+
+    closeEditBtn.onclick = () => {
+        editModal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+        if (e.target === editModal) {
+         editModal.style.display = "none";
+        }
+    };
 
     // show modal when button is clicked
     openModalBtn.onclick = () => {
