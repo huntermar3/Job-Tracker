@@ -89,6 +89,58 @@ $sql->close();
 
     <button id="openModal" class="add-job-button">+ Add Job</button>
 
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-edit">&times;</span>
+            <form method="post" action="../controllers/edit_job.php">
+            <input type="hidden" name="job_id" id="edit-job-id">
+            <input type="hidden" name="sheet_id" value="<?php echo $sheet_id; ?>">
+
+        <div class="modal-row">
+            <label for="edit-CName">Company:</label>
+            <input type="text" name="CName" id="edit-CName" required>
+        </div>
+
+        <div class="modal-row">
+            <label for="edit-JTitle">Job Title:</label>
+            <input type="text" name="JTitle" id="edit-JTitle" required>
+        </div>
+
+        <div class="modal-row">
+            <label for="edit-Location">Location:</label>
+            <input type="text" name="Location" id="edit-Location" required>
+        </div>
+
+        <div class="modal-row">
+            <label for="edit-Salary">Salary:</label>
+            <input type="number" name="Salary" id="edit-Salary">
+        </div>
+
+        <div class="modal-row">
+            <label for="edit-C_Email">Contact Email:</label>
+            <input type="email" name="C_Email" id="edit-C_Email">
+        </div>
+
+        <div class="modal-row">
+            <label for="edit-C_Phone">Contact Phone:</label>
+            <input type="text" name="C_Phone" id="edit-C_Phone">
+        </div>
+
+        <div class="modal-row">
+            <label for="edit-Date_App">Date Applied:</label>
+            <input type="date" name="Date_App" id="edit-Date_App" required>
+        </div>
+
+        <div class="modal-row">
+            <label for="edit-App_Status">Application Status:</label>
+            <input type="text" name="App_Status" id="edit-App_Status">
+        </div>
+
+        <button class="create-job-button" type="submit">Update Job</button>
+        </form>
+    </div>
+    </div>
+
     <div id = "modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -180,11 +232,12 @@ $sql->close();
                                     <input type="hidden" name="sheet_id" value="<?php echo $sheet_id; ?>">
                                     <button type="submit">Delete</button>
                                 </form>
-                                <form method="post" action="../controllers/edit_job.php">
+                                <button type = "submit" id = "open-edit-modal">Edit </button>
+                                <!-- <form method="post" action="../controllers/edit_job.php">
                                     <input type="hidden" name="job_id" value="<?php echo $job['JobID']; ?>">
                                     <input type="hidden" name="sheet_id" value="<?php echo $sheet_id; ?>">
                                     <button type="submit">Edit</button>
-                                </form>
+                                </form> -->
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -198,6 +251,10 @@ $sql->close();
     const modal = document.getElementById("modal");
     const openModalBtn = document.getElementById("openModal");
     const closeBtn = document.querySelector(".close");
+
+    const editModal = document.getElementById("edit-modal");
+    const editButtons = document.querySelectorAll(".open-edit-modal");
+    const closeEditBtn = document.querySelector(".close-edit");
 
     // show modal when button is clicked
     openModalBtn.onclick = () => {
