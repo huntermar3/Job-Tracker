@@ -16,7 +16,42 @@ Once Homebrew is installed, install PHP
 brew install php
 ```
 
-## 3. Start the PHP bulit-in server
+## 3. Install mySQL / mySQL Workbench
+```
+brew install mysql
+```
+```
+brew install --cask mysqlworkbench
+```
+
+Start the mySQL Service
+```
+brew services start mysql
+```
+
+Verify its working
+```
+mysql -u root -p
+```
+
+## 4. Create a local database in either mySQL Workbench (preferred) or by doing in command line
+```
+CREATE DATABASE job_tracker;
+```
+## 5. Create a .env file in the root of the project of where you cloned the repo
+```
+touch .env
+```
+
+Then only add these 4 lines of text
+```
+DB_HOST=localhost
+DB_NAME={whatever you named your database}
+DB_USER=root
+DB_PASS={whatever your password is for the database}
+```
+
+## 6. Start the PHP bulit-in server
 Navigate to the project folder where you cloned the repo.
 
 Then we need to start the server
@@ -24,7 +59,7 @@ Then we need to start the server
 php -S localhost:8000
 ```
 
-## 4. Open the project in any web browser
+## 7. Open the project in any web browser
 With the server running, open any browser and go to:
 ```bash
 http://localhost:8000/views/login.php
