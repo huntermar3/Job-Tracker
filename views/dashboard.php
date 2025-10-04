@@ -102,7 +102,10 @@
                     echo "</form>";
                     echo "</div>";
                     echo "<p class = 'last-modified-text'>Last Modified:". $sheet["Modified_At"] . "</p>";
-                    echo "<button class = 'open-spreadsheet-button'> Open Spreadsheet </button>";
+                    echo "<form method = 'post' action = '../controllers/opening_spreadsheet.php'>";
+                    echo "<input type='hidden' name='sheet_id' value='" . $sheet["id"] . "'>";
+                    echo "<button class = 'open-spreadsheet-button' type = 'submit'> Open Spreadsheet </button>";
+                    echo "</form>";
                     echo "</div>";
                 }
             }

@@ -8,6 +8,7 @@
 html, body {
     height: 100%;
     background: #f2f2f2;
+    overflow: hidden;
 }
 
 .title-logout-container {
@@ -56,25 +57,13 @@ hr {
     cursor: pointer;
 }
 
-.dashboard-container{
+.dashboard-container {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
 }
 
-.create-spreadsheet-button:hover{
-    background-color: #d3d3d3;
-    height: 50px;
-    width: 300px;
-    font-size: 13px;
-    font-weight: 600;
-    color: black;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 20px;
-}
-
-.create-spreadsheet-button{
+.create-spreadsheet-button {
     background-color: #0E7AFE;
     height: 50px;
     width: 300px;
@@ -86,13 +75,25 @@ hr {
     margin-top: 20px;
 }
 
+.create-spreadsheet-button:hover {
+    background-color: #d3d3d3;
+    height: 50px;
+    width: 300px;
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
 .spreadsheets-textview {
     margin-top: 20px;
-    color : #414a4c;
+    color: #414a4c;
 }
 
 .modal {
-    display: none; 
+    display: none;
     position: fixed;
     left: 0;
     top: 0;
@@ -111,7 +112,7 @@ hr {
     height: 150px;
 }
 
-.sheetName{
+.sheetName {
     width: 200px;
     height: 20px;
     font-size: 13px;
@@ -144,45 +145,47 @@ hr {
     cursor: pointer;
 }
 
-.spreadsheets-container{
+.spreadsheets-container {
     display: grid;
     background: #f2f2f2;
     width: calc(100% - 20px);
-    height: calc(100% - 20px);
+    height: calc(100vh - 200px);
     border: 2px solid #0E7AFE;
     border-radius: 6px;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 20px;
+    gap: 5px;
+    padding: 10px;
     margin-top: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.empty-spreadsheets-text {
+    color: #414a4c;
+    font-weight: 600;
+}
+
+.individual-spreadsheet {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid #0E7AFE;
     box-sizing: border-box;
 }
 
-.empty-spreadsheets-text{
-    color: #414a4c ;
-    font-weight: 600;
-
-}
-
-.individual-spreadsheet{
-    width: 300px;
-    height: 150px;
-    padding: 10px;
-    border-radius: 4px;
-    border: 2px solid #0E7AFE; 
-}
-
-.title-of-spreadsheet{
+.title-of-spreadsheet {
     color: #414a4c;
     font-weight: 500;
 }
 
-.last-modified-text{
-    color: gray ;
+.last-modified-text {
+    color: gray;
     font-weight: 600;
+    font-size: 11px;
 }
 
-.open-spreadsheet-button{
+.open-spreadsheet-button {
     background-color: #0E7AFE;
     width: 200px;
     height: 40px;
@@ -192,7 +195,7 @@ hr {
     cursor: pointer;
 }
 
-.open-spreadsheet-button:hover{
+.open-spreadsheet-button:hover {
     background-color: #d3d3d3;
     width: 200px;
     height: 40px;
@@ -202,7 +205,7 @@ hr {
     cursor: pointer;
 }
 
-.delete-button{
+.delete-button {
     background-color: #FF4C4C;
     width: 80px;
     height: 20px;
@@ -214,9 +217,8 @@ hr {
     border-radius: 4px;
 }
 
-.top-row-of-spreadsheet{
+.top-row-of-spreadsheet {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
