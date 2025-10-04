@@ -54,8 +54,6 @@ $sql = $conn -> prepare("UPDATE SPREADSHEET
 $sql -> bind_param("i", $sheet_id);
 $sql -> execute();
 
-
-
 // fetch all jobs for this spreadsheet
 $sql = $conn->prepare("
     SELECT JobID, CName, JTitle, Location, Salary, C_Email, C_Phone, Job_Desc, Date_App, App_Status

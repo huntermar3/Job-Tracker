@@ -40,7 +40,8 @@ hr {
 .logout-button {
     width: 100px;
     height: 25px;
-    background-color: #d3d3d3;
+    background-color: #0E7AFE;
+    color: white;
     border-radius: 4px;
     font-weight: 600;
     font-size: 13px;
@@ -49,7 +50,7 @@ hr {
 .logout-button:hover {
     width: 100px;
     height: 25px;
-    background-color: #0E7AFE;
+    background-color: #0056b3;
     border-radius: 4px;
     font-weight: 600;
     font-size: 13px;
@@ -76,12 +77,12 @@ hr {
 }
 
 .create-spreadsheet-button:hover {
-    background-color: #d3d3d3;
+    background-color: #0056b3;
+    color: white;
     height: 50px;
     width: 300px;
     font-size: 13px;
     font-weight: 600;
-    color: black;
     cursor: pointer;
     border-radius: 4px;
     margin-top: 20px;
@@ -196,10 +197,11 @@ hr {
 }
 
 .open-spreadsheet-button:hover {
-    background-color: #d3d3d3;
+    background-color: #0056b3;
+    font-weight: 600;
     width: 200px;
     height: 40px;
-    color: black;
+    color: white;
     font-size: 13px;
     margin-top: 20px;
     cursor: pointer;
@@ -207,14 +209,18 @@ hr {
 
 .delete-button {
     background-color: #FF4C4C;
-    width: 80px;
-    height: 20px;
+    width: 100px;
+    height: 25px;
     color: white;
     font-size: 13px;
     margin-bottom: auto;
     cursor: pointer;
     border: none;
     border-radius: 4px;
+}
+
+.delete-button:hover{
+    background-color: lightcoral;
 }
 
 .top-row-of-spreadsheet {
