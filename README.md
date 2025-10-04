@@ -43,7 +43,7 @@ CREATE DATABASE job_tracker;
 touch .env
 ```
 
-Then only add these 4 lines of text
+Then only add these 4 lines of text in the .env
 ```
 DB_HOST=localhost
 DB_NAME={whatever you named your database}
