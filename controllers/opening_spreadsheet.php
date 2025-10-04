@@ -45,6 +45,17 @@ if ($row = $result->fetch_assoc()) {
 }
 $sql->close();
 
+// I need to update the timestamp of when it was last modified since we are in this time sheet
+$sql = $conn -> prepare("UPDATE SPREADSHEET
+        SET Modified_At = NOW()
+        WHERE id = ?
+        ");
+
+$sql -> bind_param("i", $sheet_id);
+$sql -> execute();
+
+
+
 // fetch all jobs for this spreadsheet
 $sql = $conn->prepare("
     SELECT JobID, CName, JTitle, Location, Salary, C_Email, C_Phone, Job_Desc, Date_App, App_Status
@@ -133,8 +144,13 @@ $sql->close();
 
         <div class="modal-row">
             <label for="edit-App_Status">Application Status:</label>
-            <input type="text" name="App_Status" id="edit-App_Status">
+            <select name="App_Status" id="edit-App_Status">
+                <option value="Applied">Applied</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+            </select>
         </div>
+
 
         <button class="edit-job-button" type="submit">Update Job</button>
         </form>
@@ -144,7 +160,7 @@ $sql->close();
     <div id = "modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form method="post" action="../controllers/create_job.php">
+            <form method="post" action="create_job.php">
                 <input type="hidden" name="sheet_id" value="<?php echo $sheet_id; ?>">
                 
                 <div class = "modal-row">
@@ -182,10 +198,15 @@ $sql->close();
                 <input type="date" name="Date_App" maxLength = "50" required><br>
                 </div>
                 
-                <div class = "modal-row">
+                <div class="modal-row">
                 <label for="App_Status">Application Status:</label>
-                <input type="text" name="App_Status" maxLength = "50"><br>
+                <select name="App_Status" id="App_Status">
+                    <option value="Applied">Applied</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
                 </div>
+
                 
                 <button class="create-job-button" type="submit">Add Job</button>
             </form>
@@ -222,10 +243,10 @@ $sql->close();
                             <td><?php echo htmlspecialchars($job['Date_App']); ?></td>
                             <td><?php echo htmlspecialchars($job['App_Status']); ?></td>
                             <td>
-                                <form method="post" action="../controllers/delete_job.php">
+                                <form method="post" action="delete_job.php">
                                     <input type="hidden" name="job_id" value="<?php echo $job['JobID']; ?>">
                                     <input type="hidden" name="sheet_id" value="<?php echo $sheet_id; ?>">
-                                    <button type="submit">Delete</button>
+                                    <button type="submit" class = "delete-button">Delete</button>
                                 </form>
                                 <button type="button" 
                                 class="open-edit-modal"
