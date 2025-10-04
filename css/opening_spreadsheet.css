@@ -56,6 +56,8 @@
 
 .add-job-button {
     margin-top: 10px;
+    width: 100px;
+    height: 25px;
     padding: 6px 12px;
     margin-left: 20px;
     background-color: #007bff;
@@ -68,10 +70,13 @@
 
 .add-job-button:hover {
     background-color: #0056b3;
+    font-weight: 600;
 }
 
-.create-job-button {
+.create-job-button, .edit-job-button {
     background-color: #007bff;
+    height: 25px;
+    width: 100px;
     color: white;
     border: none;
     padding: 6px 12px;
@@ -80,7 +85,7 @@
     font-size: 12px;
 }
 
-.create-job-button:hover {
+.create-job-button:hover , .edit-job-button:hover {
     background-color: #0056b3;
 }
 
@@ -110,7 +115,7 @@
     overflow: hidden;
 }
 
-.close {
+.close, .close-edit {
     position: absolute;
     right: 20px;
     top: 15px;
@@ -121,7 +126,7 @@
     transition: color 0.2s;
 }
 
-.close:hover {
+.close:hover, .close-edit:hover {
     color: #0E7AFE;
 }
 
@@ -167,19 +172,20 @@ hr {
 .logout-button {
     width: 100px;
     height: 25px;
-    background-color: #d3d3d3;
+    background-color: #0E7AFE;
+    color: white;
     border-radius: 4px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .logout-button:hover {
     width: 100px;
     height: 25px;
-    background-color: #0E7AFE;
+    background-color: #0056b3;
     border-radius: 4px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     color: white;
     cursor: pointer;
 }
@@ -193,6 +199,36 @@ hr {
 
 .no-jobs-text{
     margin-left: 20px;
+}
+
+.delete-button{
+    border-radius: 4px;
+    background-color: #FF4C4C;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+    border: none;
+}
+
+.delete-button:hover {
+    background-color: lightcoral;
+}
+
+.open-edit-modal{
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+    border: none;
+    margin-top: 5px;
+}
+
+.open-edit-modal:hover {
+    background-color: #0056b3;
+    font-weight: 600;
 }
 
 @media (max-width: 768px) {
