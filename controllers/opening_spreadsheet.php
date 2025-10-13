@@ -25,12 +25,15 @@ if ($row = $result->fetch_assoc()) {
 }
 $sql->close();
 
-// check spreadsheet id
-if (!isset($_POST['sheet_id'])) {
+// Get spreadsheet id
+if (isset($_GET['sheet_id'])) { // Retrieve from URL parameter if coming from controller
+    $sheet_id = $_GET['sheet_id'];
+}
+else if (isset($_POST['sheet_id'])) { // Retrieve from POST if coming from spreadsheets
+    $sheet_id = $_POST['sheet_id'];
+} else {
     die("No spreadsheet ID found.");
 }
-
-$sheet_id = $_POST['sheet_id'];
 
 // verify ownership + get spreadsheet title
 $sql = $conn->prepare("SELECT Title FROM SPREADSHEET WHERE id = ? AND user_id = ?");
@@ -168,12 +171,12 @@ $sql->close();
                 
                 <div class = "modal-row">
                 <label for="JTitle">Job Title:</label>
-                <input type="text" name="JTitle"  maxLength = "50" required><br>
+                <input type="text" name="JTitle"  maxLength = "30" required><br>
                 </div>
                 
                 <div class = "modal-row">
                 <label for="Location">Location:</label>
-                <input type="text" name="Location" maxLength = "50" required><br>
+                <input type="text" name="Location" maxLength = "30" required><br>
                 </div>
                 
                 <div class = "modal-row">
@@ -188,7 +191,7 @@ $sql->close();
                 
                 <div class = "modal-row">
                 <label for="C_Phone">Contact Phone:</label>
-                <input type="text" name="C_Phone" maxLength = "50"><br>
+                <input type="tel" name="C_Phone" maxLength = "20"><br>
                 </div>
                 
                 <div class = "modal-row">
