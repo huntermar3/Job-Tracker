@@ -3,6 +3,7 @@ require_once "../config/database.php";
 session_start();
 
 // Get job info from post in openening_spreadsheet.php
+$JobId = $_POST['job_id'];
 $SheetId = $_POST['sheet_id'];
 $CName = $_POST['CName'];
 $JTitle = $_POST['JTitle'];
@@ -26,15 +27,15 @@ foreach ($job_params as $p) {
     }
 }
 
-// Insert
+// Update
 $DateApp = date('Y-m-d');
-$sql = $conn->prepare("INSERT INTO JOB_LISTING (Spreadsheet_id, CName, JTitle, Location, Salary, C_Email, C_Phone, Date_App, App_Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$sql->bind_param("isssissss", $SheetId, $CName, $JTitle, $Location, $Salary, $CEmail, $CPhone, $DateApp, $AppStatus);
+$sql = $conn->prepare("UPDATE JOB_LISTING SET CName=?, JTitle=?, Location=?, Salary=?, C_Email=?, C_Phone=?, Date_App=?, App_Status=? WHERE JobID=? AND Spreadsheet_id=?");
+$sql->bind_param("sssissssii", $CName, $JTitle, $Location, $Salary, $CEmail, $CPhone, $DateApp, $AppStatus, $JobId, $SheetId);
 $sql->execute();
 
 // Return
 echo "<script>
-        alert('Job added successfully!');
+        alert('Job updated successfully!');
         window.location.href = 'opening_spreadsheet.php?sheet_id=".$SheetId."';
       </script>";
 
