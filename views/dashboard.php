@@ -72,7 +72,8 @@
     <div class="dashboard-container">
         <button id="openModal" class="create-spreadsheet-button">+ Create a new spreadsheet</button>
 
-        <h3 class="spreadsheets-textview">Your Spreadsheets</h3>
+        <h3 class="spreadsheets-textview">
+            <?= htmlspecialchars($username) ?>&#39s Spreadsheets</h3>
 
         <div id="modal" class="modal">
             <div class="modal-content">
