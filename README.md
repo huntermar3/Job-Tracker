@@ -38,7 +38,13 @@ mysql -u root -p
 ```
 CREATE DATABASE job_tracker;
 ```
-## 5. Create a .env file in the root of the project of where you cloned the repo
+
+## 5. Go into mySQL Workbench with the database you just made. 
+At the top of your query, please type
+```use job_tracker ```
+Then go into root of this repo and copy structure of the tables in Job_Listing.sql. The table creation should be under "use job_tracker"
+
+## 6. Create a .env file in the root of the project of where you cloned the repo
 ```
 touch .env
 ```
@@ -51,7 +57,7 @@ DB_USER=root
 DB_PASS={whatever your password is for the database}
 ```
 
-## 6. Start the PHP bulit-in server
+## 7. Start the PHP bulit-in server
 Navigate to the project folder where you cloned the repo.
 
 Then we need to start the server
@@ -59,7 +65,7 @@ Then we need to start the server
 php -S localhost:8000
 ```
 
-## 7. Open the project in any web browser
+## 8. Open the project in any web browser
 With the server running, open any browser and go to:
 ```bash
 http://localhost:8000/views/login.php
@@ -95,7 +101,12 @@ choco install --cask mysqlworkbench
 CREATE DATABASE job_tracker;
 ```
 
-## 5. Create a .env file in the root of the project of where you cloned the repo
+## 5. Go into mySQL Workbench with the database you just made. 
+At the top of your query, please type
+```use job_tracker ```
+Then go into root of this repo and copy structure of the tables in Job_Listing.sql. The table creation should be under "use job_tracker"
+
+## 6. Create a .env file in the root of the project of where you cloned the repo
 ```
 touch .env
 ```
@@ -108,7 +119,7 @@ DB_USER=root
 DB_PASS={whatever your password is for the database}
 ```
 
-## 6. Start the PHP bulit-in server
+## 7. Start the PHP bulit-in server
 Navigate to the project folder where you cloned the repo.
 
 Then we need to start the server
@@ -116,7 +127,7 @@ Then we need to start the server
 php -S localhost:8000
 ```
 
-## 7. Open the project in any web browser
+## 8. Open the project in any web browser
 With the server running, open any browser and go to:
 ```
 http://localhost:8000/views/login.php
