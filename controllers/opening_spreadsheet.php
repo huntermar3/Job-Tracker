@@ -99,7 +99,7 @@ $sql->close();
         <h2 class="title-of-sheet"><?php echo htmlspecialchars($sheet_title); ?></h2>
     </div>
 
-    <h3 style="margin-top: 10px; text-align: center:">Total Applications: <?php echo count($jobs); ?></h3>
+    <h3 style="margin-top: 10px; padding-left: 20px; text-align: center:">Total Applications: <?php echo count($jobs); ?></h3>
 
     <button id="openModal" class="add-job-button">+ Add Job</button>
 
